@@ -1,0 +1,168 @@
+/* ---- Card Shell retains left/right alignment ---- */
+.card-shell {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: clamp(2rem, 6vw, 5rem) 0;
+}
+
+.card-left {
+  justify-content: flex-start;
+  padding-left: 10%;
+}
+
+.card-right {
+  justify-content: flex-end;
+  padding-right: 10%;
+}
+
+/* ---- Main Card Container ---- */
+.card-outer {
+  position: relative;
+  width: min(90%, 28rem);
+  background: transparent;
+  overflow: hidden; /* ✅ keeps everything inside */
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #444;
+  text-align: center;
+  transition: transform 0.3s ease;
+  border-radius: 1rem; /* ✅ matches card.svg shape */
+}
+
+.card-outer:hover {
+  transform: scale(1.02);
+}
+
+/* ---- Background white svg ---- */
+.card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---- Thumbnail area ---- */
+.thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-top-left-radius: rem;
+  border-top-right-radius: 1rem;
+  z-index: 2;
+}
+
+.thumb-img {
+  width: 96%;
+  height: 96%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ✅ Top wave sits exactly on thumbnail bottom */
+.wave-top {
+  position: absolute;
+  bottom: -0.1%;
+  left: 0;
+  width: 94%; /* a tiny bit wider to cover seam */
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ---- Text area ---- */
+.content-wrap {
+  position: relative;
+  z-index: 4;
+  padding: clamp(1rem, 2vw, 1.6rem) clamp(1rem, 2.5vw, 2rem);
+  text-align: left;
+}
+
+.card-title {
+  font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+  color: #dc0067;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+
+.card-subtitle {
+  white-space: pre-line;
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  color: #555;
+  font-style: italic;
+  text-align: center;
+}
+
+.divider {
+  height: 1px;
+  background: #dc0067;
+  opacity: 0.3;
+  width: 80%;
+  margin: 1rem auto;
+}
+
+.card-desc {
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  line-height: 1.6;
+  color: #555;
+  text-align: left;
+}
+
+/* Button / link */
+.card-link {
+  background: transparent;
+  color: #dc0067;
+  border: none;
+  font-weight: 600;
+  font-size: clamp(0.8rem, 1.3vw, 0.9rem);
+  cursor: pointer;
+  margin-top: 1rem;
+  align-self: center;
+  transition: color 0.3s ease;
+}
+
+.card-link:hover {
+  color: #b10053;
+}
+
+/* ✅ Bottom wave sits fully inside the card */
+.wave-bottom {
+  position: absolute;
+  bottom: -0.9%; 
+  left: -0.5%;
+  width: 100%; 
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+/* ---- Responsive alignment ---- */
+@media (max-width: 1200px) {
+  .card-left,
+  .card-right {
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .card-outer {
+    width: 90%;
+  }
+  .content-wrap {
+    text-align: center;
+  }
+}
+
+/* ✅ Scales slightly for very large desktops */
+@media (min-width: 1600px) {
+  .card-outer {
+    width: 32rem;
+  }
+}

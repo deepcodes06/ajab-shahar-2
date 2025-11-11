@@ -1,0 +1,124 @@
+.navbar {
+  position: relative;
+  z-index: 40;
+  width: 100%;
+  padding: 1rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* ---------- LEFT (logo) ---------- */
+.navbar-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-left: -7rem;
+}
+
+.logo {
+  height: 6rem;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ---------- CENTER LINKS ---------- */
+.nav-links {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav-item {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0b0b0b;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+}
+
+.nav-item:hover {
+  color: #db0066;
+}
+
+/* ---------- RIGHT ICONS ---------- */
+.navbar-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+.icon-button {
+  height: 2rem;
+  width: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.icon {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* ---------- Mobile Radio Button ---------- */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.radio-icon {
+  height: 2.2rem;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1400px) {
+  .navbar-left {
+    margin-left: -2rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .nav-links {
+    gap: 1.25rem;
+  }
+
+  .logo {
+    height: 5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-links,
+  .navbar-right {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .navbar-left {
+    margin-left: 0;
+  }
+}
