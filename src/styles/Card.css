@@ -1,39 +1,34 @@
-/* ---- Card Shell retains left/right alignment ---- */
 .card-shell {
   display: flex;
   justify-content: center;
   width: 100%;
   margin: clamp(2rem, 6vw, 5rem) 0;
+  padding: 0 2rem;
+  position: relative;
 }
 
 .card-left {
-  justify-content: flex-start;
-  padding-left: 10%;
+  justify-content: center;
+  transform: translateX(2%);
 }
 
-.card-right {
-  justify-content: flex-end;
-  padding-right: 10%;
-}
-
-/* ---- Main Card Container ---- */
+/* ---- Main Card ---- */
 .card-outer {
   position: relative;
   width: min(90%, 28rem);
   background: transparent;
-  overflow: hidden; /* ✅ keeps everything inside */
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  overflow: hidden;
+  font-family: "Merriweather Sans", sans-serif;
   color: #444;
   text-align: center;
   transition: transform 0.3s ease;
-  border-radius: 1rem; /* ✅ matches card.svg shape */
+  border-radius: 1rem;
+  z-index: 10;
 }
 
-.card-outer:hover {
-  transform: scale(1.02);
-}
+.card-outer:hover { transform: scale(1.02); }
 
-/* ---- Background white svg ---- */
+/* Base card SVG */
 .card-bg {
   position: absolute;
   inset: 0;
@@ -44,62 +39,72 @@
   pointer-events: none;
 }
 
-/* ---- Thumbnail area ---- */
+/* Thumbnail */
 .thumb-wrap {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-top-left-radius: rem;
+  border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   z-index: 2;
+  background: #fff;
 }
 
 .thumb-img {
-  width: 96%;
+  width: 100%;
   height: 96%;
   object-fit: cover;
   display: block;
+  margin: auto;
+  border-radius: 0.6rem;
 }
 
-/* ✅ Top wave sits exactly on thumbnail bottom */
+/* Top Wave */
 .wave-top {
   position: absolute;
-  bottom: -0.1%;
-  left: 0;
-  width: 94%; /* a tiny bit wider to cover seam */
+  bottom: -0.4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 101%;
   height: auto;
   z-index: 3;
   pointer-events: none;
 }
 
-/* ---- Text area ---- */
+/* ---- Card Text ---- */
 .content-wrap {
   position: relative;
   z-index: 4;
-  padding: clamp(1rem, 2vw, 1.6rem) clamp(1rem, 2.5vw, 2rem);
-  text-align: left;
+  padding: clamp(1.2rem, 2vw, 1.6rem) clamp(1rem, 2.5vw, 2rem);
+  text-align: center;
+  font-family: "Merriweather Sans", sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background: #fff;
 }
 
 .card-title {
+  font-family: "Lora", serif;
   font-size: clamp(1.4rem, 2.8vw, 1.9rem);
-  color: #dc0067;
-  font-weight: 700;
+  color: #e31e79;
+  font-weight: 400;
   margin-bottom: 0.3rem;
-  text-align: center;
+  line-height: 1.2;
 }
 
 .card-subtitle {
   white-space: pre-line;
-  font-size: clamp(0.9rem, 1.6vw, 1rem);
-  color: #555;
+  font-family: "Lora", serif;
   font-style: italic;
-  text-align: center;
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  color: #1a1a1a;
+  margin-bottom: 0.8rem;
 }
 
 .divider {
   height: 1px;
-  background: #dc0067;
+  background: #e31e79;
   opacity: 0.3;
   width: 80%;
   margin: 1rem auto;
@@ -108,61 +113,47 @@
 .card-desc {
   font-size: clamp(0.85rem, 1.5vw, 1rem);
   line-height: 1.6;
-  color: #555;
+  color: #333;
   text-align: left;
+  margin-bottom: 2.5rem;
 }
 
-/* Button / link */
+/* Explore Link bottom-right */
 .card-link {
-  background: transparent;
-  color: #dc0067;
-  border: none;
-  font-weight: 600;
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.6rem;
+  font-family: "Merriweather Sans", sans-serif;
   font-size: clamp(0.8rem, 1.3vw, 0.9rem);
-  cursor: pointer;
-  margin-top: 1rem;
-  align-self: center;
-  transition: color 0.3s ease;
+  font-weight: 600;
+  color: #e31e79;
+  text-transform: uppercase;
+  background: #fff;
+  padding: 0.3rem 0.8rem;
 }
 
 .card-link:hover {
-  color: #b10053;
+  color: #e31e79;
 }
 
-/* ✅ Bottom wave sits fully inside the card */
+/* Bottom Wave fix */
 .wave-bottom {
   position: absolute;
-  bottom: -0.9%; 
-  left: -0.5%;
-  width: 100%; 
+  bottom: -0.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 103%;
   height: auto;
-  z-index: 1;
+  z-index: 3;
   pointer-events: none;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
 }
 
-/* ---- Responsive alignment ---- */
-@media (max-width: 1200px) {
-  .card-left,
-  .card-right {
-    justify-content: center;
-    padding: 0;
-  }
-}
-
+/* Responsive */
 @media (max-width: 700px) {
-  .card-outer {
-    width: 90%;
-  }
-  .content-wrap {
-    text-align: center;
-  }
+  .card-outer { width: 90%; }
+  .card-link { bottom: 0.8rem; right: 1rem; font-size: 0.8rem; }
 }
 
-/* ✅ Scales slightly for very large desktops */
 @media (min-width: 1600px) {
-  .card-outer {
-    width: 32rem;
-  }
+  .card-outer { width: 32rem; }
 }

@@ -1,4 +1,3 @@
-/* Footer container: allow the wave to overflow and keep footer content above the wave */
 .footer {
   position: relative;
   color: rgb(246, 244, 244);
@@ -7,22 +6,21 @@
   flex-direction: column;
   align-items: center;
   isolation: isolate;
-  background: #f7f4f4;
-  overflow: visible;           /* <- allow wave to extend beyond footer without clipping */
-  z-index: 5;                  /* footer layer above side waves */
+  background: #000;
+  overflow: visible;    
+  z-index: 5;
 }
 
-/* footer wave (the down.svg) - sits under footer content but above side waves */
 .footer-bg {
   position: absolute;
-  top: -3vw; /* responsive lift to eliminate white gaps */
+  top: -7vw;
   left: 50%;
   transform: translateX(-50%);
-  width: 125%; /* extends slightly beyond viewport */
-  min-height: 25vw; /* ensures tall enough coverage on all screens */
+  width: 130%; 
+  min-height: 35vw;
   height: auto;
   display: block;
-  object-fit: cover; /* ensures it fills entire area nicely */
+  object-fit: cover;
   pointer-events: none;
   z-index: 1;
 }
@@ -30,15 +28,14 @@
 /* Footer content must be above the wave */
 .footer-content {
   position: relative;
-  z-index: 2;                  /* ensures text/buttons sit above .footer-bg */
+  z-index: 2;
   width: 100%;
   max-width: 1000px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 6rem; /* ✅ pushes content clear of wave top */
 }
-
 
 .footer-col {
   display: flex;
@@ -56,7 +53,7 @@
 .footer-text {
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #333;
+  color: #ccc;
 }
 
 /* ---------- SUBSCRIBE INPUT ---------- */
@@ -69,9 +66,9 @@
 
 .footer-input {
   flex: 1;
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  color: #222;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
   padding: 0.5rem 0.75rem;
   border-radius: 4px;
   font-size: 0.9rem;
@@ -123,7 +120,7 @@
   text-align: center;
   font-size: 0.75rem;
   margin-top: 3rem;
-  color: #555;
+  color: #aaa;
 }
 
 .footer-divider {
@@ -150,8 +147,8 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 0.3rem; /* small space between logo and text */
-  margin-bottom: -0.5rem; /* aligns nicely with divider line */
+  gap: 0.3rem;
+  margin-bottom: -0.5rem;
 }
 
 /* --- Logo --- */
@@ -168,42 +165,10 @@
   color: #fff;
   letter-spacing: 0.4px;
   white-space: nowrap;
-  transform: translateY(-0.1rem); /* vertically fine-tune to touch logo bottom */
-}
-
-/* Keep responsiveness consistent with rest */
-@media (max-width: 768px) {
-  .footer-logo-group {
-    gap: 0.25rem;
-  }
-
-  .footer-logo2 {
-    width: clamp(50px, 9vw, 80px);
-  }
-
-  .footer-logo-text {
-    font-size: clamp(0.6rem, 1.8vw, 0.9rem);
-  }
-}
-
-
-/* “Kabir’s Project” text */
-.footer-logo-text {
-  font-size: 0.8rem;
-  color: #fff;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-  transform: translateY(0.2rem); /* align baseline with logo visually */
+  transform: translateY(0.2rem);
 }
 
 /* ---------- RESPONSIVE ---------- */
-@media (max-width: 768px) {
-  .footer-logo2 {
-    width: 10vw;
-    max-width: 80px;
-  }
-}
-
 @media (max-width: 1000px) {
   .footer-content {
     grid-template-columns: 1fr 1fr;
@@ -212,6 +177,10 @@
 
   .footer {
     padding: 6rem 5% 3rem;
+  }
+
+  .footer-bg {
+    top: -15vw; /* ✅ adjust overlap for smaller screens */
   }
 }
 
@@ -236,7 +205,7 @@
   }
 
   .footer-bg {
-    width: 130%;
-    opacity: 1;
+    width: 150%;
+    top: -25vw;
   }
 }

@@ -31,13 +31,18 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
             <img src={`/${icon}.svg`} alt={icon} className="icon" />
           </button>
         ))}
+
+        {/* Radio Icon at the end */}
+        <Link to="/radio" className="radio-link" aria-label="Radio">
+          <img src="/radio.svg" alt="radio" className="radio-icon" />
+        </Link>
       </div>
 
-      {/* Mobile Radio Button instead of menu */}
+      {/* Mobile toggle (optional hamburger or radio) */}
       <button
         className="menu-toggle"
         onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Radio"
+        aria-label="Menu"
       >
         <img src="/radio.svg" alt="radio" className="radio-icon" />
       </button>

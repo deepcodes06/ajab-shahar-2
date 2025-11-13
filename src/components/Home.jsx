@@ -16,7 +16,7 @@ export default function Home() {
       title: "Main Nijaam Se Naina",
       subtitle:
         "I Lost My Heart To Nizam’s Glance\nsing FARID AYAZ & ABU MOHAMMED\npoet AMIR KHUSRO",
-      desc: "The delicacy of locking eyes with the beloved and losing one’s heart to him combines in this song with a delightful disregard for social convention, represented by the gossiping neighbourhood women ...",
+      desc: "The delicacy of locking eyes with the beloved and losing one’s heart to him combines in this song with a delightful disregard for social convention, represented by the gossiping neighbourhood women",
       linkText: "EXPLORE SONG",
     },
     {
@@ -48,12 +48,13 @@ export default function Home() {
   return (
     <>
       <div className="home-container">
-        {/* Background and overlay images */}
-        <img src="/bg.svg" className="bg-pattern" alt="background" />
-        <img src="/top.svg" className="top-wave" alt="top" />
-        <img src="/left.svg" className="side left" alt="left" />
-        <img src="/right.svg" className="side right" alt="right" />
-        <img src="/tree.svg" className="tree" alt="tree" />
+        {/* Background and decorative layers */}
+        <div className="bg-pattern"></div>
+        <div className="top-wave"></div>
+        <div className="side left"></div>
+        <div className="side right"></div>
+        <div className="tree"></div>
+
         <div className="home-content">
           <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           {menuOpen && <MobileMenu />}

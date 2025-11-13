@@ -1,8 +1,20 @@
 import "../styles/Card.css";
 
-export default function Card({ img, title, subtitle, desc, linkText, position }) {
+export default function Card({
+  img,
+  title,
+  subtitle,
+  desc,
+  linkText,
+  position = "left", // left or right
+  offsetX = "0%",
+  offsetY = "0vh",
+}) {
   return (
-    <div className={`card-shell ${position === "right" ? "card-right" : "card-left"}`}>
+    <div
+      className={`card-shell ${position === "right" ? "card-right" : "card-left"}`}
+      style={{ "--x": offsetX, "--y": offsetY }}
+    >
       <div className="card-outer">
         <img src="/card.svg" alt="" aria-hidden="true" className="card-bg" />
 
