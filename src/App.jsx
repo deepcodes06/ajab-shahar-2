@@ -2,6 +2,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
+import Songs from "./components/Songs";
 import "./App.css";
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/songs" element={<Songs />} />
           </Routes>
         </main>
       </div>

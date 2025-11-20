@@ -1,0 +1,94 @@
+/* OVERLAY */
+.filter-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+  z-index: 200;
+}
+
+.filter-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* DRAWER */
+.filter-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100vh;
+  background: #fff;
+  transform: translateX(-100%);
+  transition: 0.35s ease;
+  z-index: 300;
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+}
+
+.filter-drawer.open {
+  transform: translateX(0);
+}
+
+/* HEADER */
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e31e79;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+
+.drawer-close {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* SECTION */
+.filter-section h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+
+.filter-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.filter-section li {
+  padding: 0.35rem 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.filter-section li:hover {
+  color: #e31e79;
+}
+
+/* CLEAR BUTTON */
+.clear-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #e31e79;
+  color: #e31e79;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.clear-btn:hover {
+  background: #e31e7933;
+}

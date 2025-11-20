@@ -84,14 +84,12 @@
 .card-wrapper {
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   margin: 8rem auto;
   gap: 4rem;
   max-width: 1200px;
 }
-.card-wrapper.align-left { flex-direction: row; transform: translateY(-4vh); }
-.card-wrapper.align-right { flex-direction: row-reverse; transform: translateY(4vh); }
+
 
 /* ----------- Responsive Layout ----------- */
 @media (max-width: 1200px) {

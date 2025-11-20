@@ -1,7 +1,7 @@
 .card-shell {
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 98%;
   margin: clamp(2rem, 6vw, 5rem) 0;
   padding: 0 2rem;
   position: relative;
@@ -17,26 +17,17 @@
   position: relative;
   width: min(90%, 28rem);
   background: transparent;
-  overflow: hidden;
+  overflow: visible; /* allow bottom wave to show fully */
   font-family: "Merriweather Sans", sans-serif;
   color: #444;
-  text-align: center;
+  text-align: left;
   transition: transform 0.3s ease;
   border-radius: 1rem;
   z-index: 10;
 }
 
-.card-outer:hover { transform: scale(1.02); }
-
-/* Base card SVG */
-.card-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  z-index: 0;
-  pointer-events: none;
+.card-outer:hover {
+  transform: scale(1.02);
 }
 
 /* Thumbnail */
@@ -77,11 +68,11 @@
   position: relative;
   z-index: 4;
   padding: clamp(1.2rem, 2vw, 1.6rem) clamp(1rem, 2.5vw, 2rem);
-  text-align: center;
   font-family: "Merriweather Sans", sans-serif;
   color: #333;
   line-height: 1.6;
   background: #fff;
+  text-align: left;
 }
 
 .card-title {
@@ -106,8 +97,8 @@
   height: 1px;
   background: #e31e79;
   opacity: 0.3;
-  width: 80%;
-  margin: 1rem auto;
+  width: 100%;
+  margin: 1rem 0;
 }
 
 .card-desc {
@@ -115,13 +106,13 @@
   line-height: 1.6;
   color: #333;
   text-align: left;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3.5rem; /* extra space above explore text */
 }
 
-/* Explore Link bottom-right */
+/* ---- Explore Link bottom-right ---- */
 .card-link {
   position: absolute;
-  bottom: 1.2rem;
+  bottom: -1rem; /* sits right above bottom wave */
   right: 1.6rem;
   font-family: "Merriweather Sans", sans-serif;
   font-size: clamp(0.8rem, 1.3vw, 0.9rem);
@@ -130,25 +121,27 @@
   text-transform: uppercase;
   background: #fff;
   padding: 0.3rem 0.8rem;
+  z-index: 5; /* keeps text above the wave */
 }
 
 .card-link:hover {
-  color: #e31e79;
+  color: #b10053;
 }
 
-/* Bottom Wave fix */
+/* ---- Bottom Wave (fixed layering) ---- */
 .wave-bottom {
   position: absolute;
-  bottom: -0.5%;
-  left: 50%;
+  bottom: -3rem;
+  left: 51%;
   transform: translateX(-50%);
-  width: 103%;
+  width: 104%;
   height: auto;
-  z-index: 3;
+  z-index: 2; 
   pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
 }
 
-/* Responsive */
+/* ---- Responsive ---- */
 @media (max-width: 700px) {
   .card-outer { width: 90%; }
   .card-link { bottom: 0.8rem; right: 1rem; font-size: 0.8rem; }

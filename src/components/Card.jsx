@@ -16,8 +16,6 @@ export default function Card({
       style={{ "--x": offsetX, "--y": offsetY }}
     >
       <div className="card-outer">
-        <img src="/card.svg" alt="" aria-hidden="true" className="card-bg" />
-
         <div className="thumb-wrap">
           <img src={img} alt={title} className="thumb-img" />
           <img src="/t.svg" alt="" aria-hidden="true" className="wave-top" />

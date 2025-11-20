@@ -80,8 +80,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: clamp(2.5rem, 6vw, 3.6rem);
-  width: clamp(2.5rem, 6vw, 3.6rem);
   transition: transform 0.3s ease;
   z-index: 50;
 }
@@ -91,8 +89,8 @@
 }
 
 .radio-icon {
-  height: 100%;
-  width: auto;
+  height: 90%;
+  width: 90%;
   object-fit: contain;
   pointer-events: auto;
 }
