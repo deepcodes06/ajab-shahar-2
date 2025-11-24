@@ -39,7 +39,7 @@
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: left top;
-  z-index: 5;
+  z-index: 6;
   pointer-events: none;
 }
 
@@ -52,12 +52,11 @@
   background-repeat: no-repeat;
   background-position: center;
   pointer-events: none;
-  z-index: 4;
+  z-index: 3;
 }
 .songs-side.left { left: 0; background-image: url("/left.svg"); }
 .songs-side.right { right: 0; background-image: url("/right.svg"); }
 
-/* TREE */
 .songs-tree {
   position: absolute;
   bottom: 12vh;
@@ -67,8 +66,9 @@
   height: 15vh;
   background-image: url("/tree.svg");
   background-repeat: no-repeat;
+  background-size: contain;
   background-position: bottom;
-  z-index: 20;
+  z-index: 30;
   pointer-events: none;
   filter: brightness(0) contrast(150%);
 }
@@ -106,13 +106,24 @@
   opacity: 0.25;
 }
 
-
 .songs-meta {
   margin-top: 0;     
   margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
 }
+
+.open-filter-btn {
+  position: absolute;
+  top: 1vh;            
+  left: -11vw;     
+  background: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e31e79;
+  z-index: 4;          /* must sit ABOVE waves */
+}
+
 
 /* GRID */
 .songs-grid {
@@ -122,6 +133,18 @@
   gap: 8rem;
   justify-items: center;
   overflow: visible;
+}
+
+.open-filter-btn,
+.filter-section li {
+  outline: none;
+  border: none;
+}
+
+.alpha-btn:hover,
+.filter-section li:hover {
+  background: none !important;
+  box-shadow: none !important;
 }
 
 /* FILTERS */
@@ -144,3 +167,16 @@
 @media (max-width: 480px) {
   .songs-tree { display: none; }
 }
+
+@media (max-width: 768px) {
+  .open-filter-btn {
+    top: 18vh;
+    left: 4vw;
+    font-size: 1rem;
+  }
+
+  .filter-header {
+    margin-top: 1rem;
+  }
+}
+

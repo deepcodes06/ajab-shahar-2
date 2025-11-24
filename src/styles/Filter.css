@@ -6,28 +6,25 @@
   opacity: 0;
   pointer-events: none;
   transition: 0.3s ease;
-  z-index: 200;
 }
 
 .filter-overlay.show {
-  opacity: 1;
+  opacity: 0;
   pointer-events: auto;
 }
 
 /* DRAWER */
 .filter-drawer {
   position: fixed;
-  top: 0;
+  top: 16vh;
   left: 0;
-  width: 320px;
-  height: 100vh;
+  width: 300px;
+  height: auto;
   background: #fff;
   transform: translateX(-100%);
   transition: 0.35s ease;
-  z-index: 300;
-  padding: 2rem 1.5rem;
-  overflow-y: auto;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  z-index: 5;
+  padding: 2rem 3rem;
 }
 
 .filter-drawer.open {
@@ -38,16 +35,18 @@
 .filter-header {
   display: flex;
   justify-content: space-between;
-  font-size: 1.1rem;
+  margin-top: 1.6rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #e31e79;
   border-bottom: 1px solid #ccc;
-  padding-bottom: 0.7rem;
-  margin-bottom: 1.2rem;
+  padding-bottom: 0rem;
+  margin-bottom: 0rem;
 }
 
 .drawer-close {
   background: none;
+  color: black;
   border: none;
   font-size: 1.4rem;
   cursor: pointer;
@@ -57,7 +56,7 @@
 .filter-section h3 {
   font-size: 0.95rem;
   font-weight: 700;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
   color: #333;
 }
 

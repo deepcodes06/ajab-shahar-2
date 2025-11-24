@@ -25,12 +25,12 @@ export default function Songs() {
 
   return (
     <div className="songs-page">
-    <FilterDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
       <div className="songs-bg-pattern" />
       <div className="songs-top-wave" />
       <div className="songs-side left" />
       <div className="songs-side right" />
       <div className="songs-tree" />
+      <FilterDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
       <div className="nav-content">
         <Navbar />
       </div>
@@ -59,7 +59,7 @@ export default function Songs() {
             className="open-filter-btn"
             onClick={() => setDrawerOpen(true)}
           >
-            Filters |
+            Filters+
           </button>
           <div className="songs-filters" aria-hidden>
             <span className="filter-title">Filters |</span>
