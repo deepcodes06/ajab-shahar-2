@@ -1,12 +1,14 @@
-import "../styles/Card.css";
+import { Link } from "react-router-dom";
+import "../styles/Card.css"; 
 
 export default function Card({
+  id,
   img,
   title,
   subtitle,
   desc,
   linkText,
-  position = "left", // left or right
+  position = "left",
   offsetX = "0%",
   offsetY = "0vh",
 }) {
@@ -26,7 +28,11 @@ export default function Card({
           <h4 className="card-subtitle">{subtitle}</h4>
           <div className="divider"></div>
           <p className="card-desc">{desc}</p>
-          <button className="card-link">{linkText}</button>
+
+          {/* Link to detail page */}
+          <Link to={`/song/${id}`} className="card-link">
+            {linkText}
+          </Link>
         </div>
 
         <img src="/b.svg" alt="" aria-hidden="true" className="wave-bottom" />
