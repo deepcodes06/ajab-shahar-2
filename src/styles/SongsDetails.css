@@ -173,6 +173,7 @@
   max-width: 48rem;
   margin: 0 auto 2.5rem;
   text-align: left;
+  font-family: "Merriweather Sans", sans-serif;
 }
 
 .about-wrapper {
@@ -181,10 +182,10 @@
   color: #444;
 }
 
-/* clamp to 4 lines when NOT expanded */
 .about-wrapper:not(.about-expanded) .song-about {
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
   overflow: hidden;
 }
 

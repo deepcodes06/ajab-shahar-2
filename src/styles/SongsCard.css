@@ -27,8 +27,6 @@
   display: block;
 }
 
-
-/* TOP WAVE */
 .songcard-wave-top {
   position: absolute;
   bottom: -4.6rem;
@@ -40,7 +38,6 @@
 }
 
 
-/* BODY */
 .songcard-body {
   position: relative;
   background: #fff;
@@ -66,8 +63,6 @@
 .songcard-divider {
   height: 1px;
   background: #e31e79;
-  opacity: 0.28;
-  margin: 0.5rem 0 0.8rem;
 }
 
 .songcard-meta {

@@ -1,27 +1,45 @@
 // src/pages/Songs.jsx
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FilterDrawer from "./FilterDrawer";
-import "../styles/Songs.css";
-import "../styles/SongsCard.css"; 
+import { fetchSongs } from "../api/songs";
+import SongCard from "../components/SongsCard";
 
-const dummy = [
-  { img: "/img1.svg", title: "Aarshi Nogor", subtitle: "City Of Mirrors" },
-  { img: "/img2.svg", title: "Ab Thaara Laal", subtitle: "City Of Mirrors" },
-  { img: "/img3.svg", title: "Aarshi Nogor", subtitle: "City Of Mirrors" },
-  { img: "/img1.svg", title: "Aarshi Nogor", subtitle: "City Of Mirrors" },
-  { img: "/img2.svg", title: "Ab Thaara Laal", subtitle: "City Of Mirrors" },
-  { img: "/img3.svg", title: "Aarshi Nogor", subtitle: "City Of Mirrors" },
-  { img: "/img1.svg", title: "Aarshi Nogor", subtitle: "City Of Mirrors" },
-  { img: "/img2.svg", title: "Ab Thaara Laal", subtitle: "City Of Mirrors" },
-  { img: "/img3.svg", title: "Aarshi Nogor", subtitle: "City Of Mirrors" },
-];
+import "../styles/Songs.css";
+import "../styles/SongsCard.css";
 
 export default function Songs() {
-
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [songs, setSongs] = useState([]);
+  const [activeLetter, setActiveLetter] = useState("ALL");
+
+  useEffect(() => {
+    async function load() {
+      const res = await fetchSongs();
+
+      const mapped = res.map((item) => ({
+        id: item.id,
+        img: item.thumbnailURL
+          ? `https://ajabshahar.com${item.thumbnailURL}`
+          : "/fallback.svg",
+        title: item.metaTitle || "Untitled",
+        subtitle:
+          item.songTitle?.english || item.metaKeywords?.split(",")[0] || "—",
+        meta1: item.singers?.[0]?.name || "",
+        meta2: item.poets?.[0]?.name || "",
+      }));
+
+      setSongs(mapped);
+    }
+
+    load();
+  }, []);
+
+  const filteredSongs = songs.filter((song) => {
+    if (activeLetter === "ALL") return true;
+    return song.title?.toUpperCase().startsWith(activeLetter);
+  });
 
   return (
     <div className="songs-page">
@@ -30,69 +48,48 @@ export default function Songs() {
       <div className="songs-side left" />
       <div className="songs-side right" />
       <div className="songs-tree" />
+
       <FilterDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
+
       <div className="nav-content">
         <Navbar />
       </div>
+
       <div className="songs-content">
-        
         <div className="songs-intro">
           <p>
+            {" "}
             The utterances of Bhakti, Sufi and Baul poets have been kept alive
             over centuries through song, and that is what you find here – live
             recordings of oral poetry all the way from Pakistan in the west to
             Bengal in the east, pulsating to rhythm and melody, sung and
             recorded in contexts as diverse as urban stages and village squares,
             on trains and road journeys, in living rooms and under the wide open
-            sky.
+            sky.{" "}
           </p>
         </div>
 
         <div className="songs-header">
-          <p>201 Songs</p>
+          <p>{filteredSongs.length} Songs</p>
           <div className="songs-divider"></div>
         </div>
 
         <div className="songs-meta">
-
-          <button 
+          <button
             className="open-filter-btn"
             onClick={() => setDrawerOpen(true)}
           >
             Filters+
           </button>
-          <div className="songs-filters" aria-hidden>
+
+          <div className="songs-filters">
             <span className="filter-title">Filters |</span>
-            {[
-              "ALL",
-              "A",
-              "B",
-              "C",
-              "D",
-              "E",
-              "F",
-              "G",
-              "H",
-              "I",
-              "J",
-              "K",
-              "L",
-              "M",
-              "N",
-              "O",
-              "P",
-              "Q",
-              "R",
-              "S",
-              "T",
-              "U",
-              "V",
-              "W",
-              "X",
-              "Y",
-              "Z",
-            ].map((ch) => (
-              <button key={ch} className="alpha-btn">
+            {["ALL", ..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((ch) => (
+              <button
+                key={ch}
+                className="alpha-btn"
+                onClick={() => setActiveLetter(ch)}
+              >
                 {ch}
               </button>
             ))}
@@ -100,29 +97,15 @@ export default function Songs() {
         </div>
 
         <div className="songs-grid" role="list">
-          {dummy.map((item, i) => (
-            <article className="songcard" key={i} role="listitem">
-              <div className="songcard-thumb">
-                <img src={item.img} alt={item.title} />
-                <img src="/t.svg" alt="" className="songcard-wave-top" />
-              </div>
-
-              <div className="songcard-body">
-                <h2 className="songcard-title">{item.title}</h2>
-                <p className="songcard-sub">{item.subtitle}</p>
-
-                <div className="songcard-divider" />
-
-                <p className="songcard-meta">City Of Mirrors</p>
-                <p className="songcard-meta">FARID AYAZ & ABU MOHAMMED</p>
-                <p className="songcard-meta">poet AMIR KHUSRO</p>
-
-                <button className="songcard-btn">EXPLORE SONG</button>
-              </div>
-
-              <img src="/b.svg" alt="" className="songcard-wave-bottom" />
-            </article>
-          ))}
+          {filteredSongs.length === 0 ? (
+            <p>Loading songs...</p>
+          ) : (
+            filteredSongs.map((song) => (
+              <article className="songcard" key={song.id}>
+                <SongCard song={song} />
+              </article>
+            ))
+          )}
         </div>
       </div>
 
