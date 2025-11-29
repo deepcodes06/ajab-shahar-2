@@ -63,6 +63,7 @@
 .songcard-divider {
   height: 1px;
   background: #e31e79;
+  opacity: 0.3;
 }
 
 .songcard-meta {

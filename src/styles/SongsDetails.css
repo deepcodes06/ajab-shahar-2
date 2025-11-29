@@ -251,20 +251,121 @@
   margin-bottom: 0.6rem;
 }
 
-/* =========================
-   BOTTOM RELATED SECTION
-========================= */
-
-.related-bottom {
-  max-width: 48rem;
-  margin: 0 auto;
-  text-align: center;
+.related-title {
+  font-size: 1.4rem;
+  font-family: "Lora";
+  margin-bottom: 1rem;
+  color: #444;
 }
 
-.related-note {
+/* Tabs */
+.related-tabs {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.r-tab {
+  background: none;
+  border: none;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+}
+
+.r-tab.active {
+  color: #e31e79;
+}
+
+/* List */
+.related-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Each item (full-width row) */
+.related-item {
+  display: flex;
+  gap: 1.2rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid #ebebeb;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Thumbnail */
+.related-thumb img {
+  width: 240px;
+  height: 145px;
+  object-fit: cover;
+  border-radius: 0; /* NO round corners */
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.15);
+}
+
+/* Text */
+.related-body {
+  flex: 1;
+}
+
+.related-name {
+  font-size: 1.1rem;
+  color: #e31e79;
+  margin-bottom: 0.2rem;
+}
+
+.related-sub {
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;
+}
+
+.related-desc {
   font-size: 0.85rem;
-  color: #666;
+  color: #444;
+  line-height: 1.5;
 }
+
+/* SEE MORE button */
+.related-more {
+  margin-top: 1rem;
+  background: none;
+  border: none;
+  color: #e31e79;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Floating words */
+.related-floating-words {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  color: #444;
+  font-family: "Lora";
+}
+
+.related-floating-words i {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .related-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .related-thumb img {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+
 
 /* =========================
    RESPONSIVE

@@ -1,16 +1,61 @@
-# React + Vite
+This project is a frontend recreation of the Ajab Shahar website, built using Vite, React, and Pure CSS.
+The goal is to replicate the figma design while integrating live data from the official Ajab Shahar Songs API.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<!-- Tech Stack -->
 
-Currently, two official plugins are available:
+1.Vite + React
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2.Pure CSS
 
-## React Compiler
+3.API Fetching (Axios / Fetch)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+4.SVG assets from public folder
 
-## Expanding the ESLint configuration
+<!-- Objective -->
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1.Create the design, layout, and animations of the Ajab Shahar platform.
+
+2.Build all pages including Home, Songs, Poems, Reflections, People, Films, Song Details, etc.
+
+3.Ensure pixel-perfect fidelity in layout, spacing, typography, and background effects.
+
+Make the entire UI fully responsive across devices.
+
+<!-- Key Features -->
+
+1.Fully responsive
+
+2.Wave patterns, background textures, and side SVG aesthetics preserved.
+
+3.Song cards display live
+
+4.Clean routing structure using React Router.
+ 
+<!--Responsiveness -->
+
+Mobile, Tablet, and Desktop views fully supported.
+
+SVG waves, background patterns, and grid layouts adjust automatically based on screen width.
+
+<!-- API Integration -->
+
+1.Fetch songs dynamically from:
+https://ajabshahar.com/api/songs
+
+2.Map API fields to the cloned UI’s card layout.
+
+3.Support features such as:
+
+Dynamic song list
+
+Trending/filter-based sections
+
+Individual song detail page
+
+<!-- Performance & Structure -->
+
+Components extracted for modularity (Navbar, Footer, SongCard, FilterDrawer).
+
+Real API integration replaces all dummy data.
+
+Codebase optimized for clarity and scalability.
