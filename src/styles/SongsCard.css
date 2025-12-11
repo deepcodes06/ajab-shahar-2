@@ -2,21 +2,19 @@
 .songcard {
   position: relative;
   width: 100%;
-  max-width: clamp(15rem, 19vw, 18rem);
+  max-width: clamp(15rem, 19vw, 14rem);
   background: transparent;
   overflow: visible;
   z-index: 4;
 }
 
-
-/* THUMBNAIL */
 .songcard-thumb {
   position: relative;
   width: 100%;
-  height: clamp(8rem, 12vw, 10rem);  /* no px, fully responsive */
+  height: clamp(8rem, 12vw, 10rem);  
   overflow: hidden;
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
   background: #000;
   z-index: 5;
 }
@@ -37,7 +35,6 @@
   z-index: 6;
 }
 
-
 .songcard-body {
   position: relative;
   background: #fff;
@@ -49,45 +46,34 @@
 }
 
 .songcard-title {
-  font-family: "Lora", serif;
+  font-family: "Lora";  
   color: #e31e79;
-  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: normal;
+  font-style: normal;
+  margin-top: -1rem;
+}
+
+.songcard-umbrella {
+  color: #828282;
+  font-family: Lora;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 0.3rem;
 }
 
 .songcard-sub {
-  font-style: italic;
-  margin-bottom: 0.5rem;
-  font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+  color: #4F4F4F;
+  font-family: "Merriweather Sans";
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0.5rem 0 -2rem 0;
+  text-align: left;
 }
-
-.songcard-divider {
-  height: 1px;
-  background: #e31e79;
-  opacity: 0.3;
-}
-
-.songcard-meta {
-  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
-  color:#333;
-  line-height: 1.4;
-}
-
-
-/* EXPLORE BUTTON */
-.songcard-btn {
-  position: absolute;
-  right: clamp(0.6rem, 1vw, 1rem);
-  bottom: clamp(0.6rem, -10vw, 1rem);
-  background: transparent;
-  border: none;
-  color: #e31e79;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
-  transition: transform 0.3s ease;
-  z-index: 10;
-}
-
 
 /* BOTTOM WAVE */
 .songcard-wave-bottom {
@@ -99,7 +85,6 @@
   pointer-events: none;
   z-index: 3;
 }
-
 
 /* MOBILE */
 @media (max-width: 600px) {

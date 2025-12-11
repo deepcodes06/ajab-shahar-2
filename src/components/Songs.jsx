@@ -1,45 +1,67 @@
-// src/pages/Songs.jsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FilterDrawer from "./FilterDrawer";
-import { fetchSongs } from "../api/songs";
 import SongCard from "../components/SongsCard";
-
+import useFetchSongs from "../hooks/useSongs";
+import { mapSongs } from "../utils/mapSong";
 import "../styles/Songs.css";
 import "../styles/SongsCard.css";
 
 export default function Songs() {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [songs, setSongs] = useState([]);
   const [activeLetter, setActiveLetter] = useState("ALL");
+  const [activeFilter, setActiveFilter] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(9);
+  const { data: songs } = useFetchSongs([]);
+  const mappedSongs = mapSongs(songs);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get("q")?.toLocaleLowerCase() || "";
 
-  useEffect(() => {
-    async function load() {
-      const res = await fetchSongs();
+  // ✅ MAIN FILTER LOGIC (ALPHABET + SINGER/POET + SEARCH)
+  const filteredSongs = mappedSongs.filter((song, index) => {
+    const originalSong = songs[index];
 
-      const mapped = res.map((item) => ({
-        id: item.id,
-        img: item.thumbnailURL
-          ? `https://ajabshahar.com${item.thumbnailURL}`
-          : "/fallback.svg",
-        title: item.metaTitle || "Untitled",
-        subtitle:
-          item.songTitle?.english || item.metaKeywords?.split(",")[0] || "—",
-        meta1: item.singers?.[0]?.name || "",
-        meta2: item.poets?.[0]?.name || "",
-      }));
+    // 🚨 Ignore alphabet filter when searching
+    const alphaMatch = searchQuery
+      ? true
+      : activeLetter === "ALL" ||
+        song.title?.toUpperCase().startsWith(activeLetter);
 
-      setSongs(mapped);
+    // Singer / Poet filter
+    let typeMatch = true;
+    if (activeFilter) {
+      if (activeFilter.type === "singer") {
+        typeMatch = originalSong?.singers?.some(
+          (s) => s.name === activeFilter.value
+        );
+      }
+      if (activeFilter.type === "poet") {
+        typeMatch = originalSong?.poets?.some(
+          (p) => p.name === activeFilter.value
+        );
+      }
     }
 
-    load();
-  }, []);
+    // SEARCH FILTER
+    const searchMatch =
+      !searchQuery ||
+      song.title?.toLowerCase().includes(searchQuery) ||
+      originalSong?.singers?.some((s) =>
+        s.name.toLowerCase().includes(searchQuery)
+      );
 
-  const filteredSongs = songs.filter((song) => {
-    if (activeLetter === "ALL") return true;
-    return song.title?.toUpperCase().startsWith(activeLetter);
+    return alphaMatch && typeMatch && searchMatch;
   });
+
+  // ✅ Reset pagination on filter change
+  useEffect(() => {
+    setVisibleCount(9);
+  }, [activeLetter, activeFilter]);
+
+  // ✅ Visible cards only
+  const visibleSongs = filteredSongs.slice(0, visibleCount);
 
   return (
     <div className="songs-page">
@@ -47,9 +69,21 @@ export default function Songs() {
       <div className="songs-top-wave" />
       <div className="songs-side left" />
       <div className="songs-side right" />
-      <div className="songs-tree" />
 
-      <FilterDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
+      {/* ✅ FILTER DRAWER CONNECTED PROPERLY */}
+      <FilterDrawer
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        songs={songs}
+        onFilter={(type, value) => {
+          setSearchParams({});
+          if (!type) {
+            setActiveFilter(null);
+          } else {
+            setActiveFilter({ type, value });
+          }
+        }}
+      />
 
       <div className="nav-content">
         <Navbar />
@@ -58,14 +92,13 @@ export default function Songs() {
       <div className="songs-content">
         <div className="songs-intro">
           <p>
-            {" "}
             The utterances of Bhakti, Sufi and Baul poets have been kept alive
-            over centuries through song, and that is what you find here – live
+            over centuries through song, and that is what you find here - live
             recordings of oral poetry all the way from Pakistan in the west to
             Bengal in the east, pulsating to rhythm and melody, sung and
             recorded in contexts as diverse as urban stages and village squares,
             on trains and road journeys, in living rooms and under the wide open
-            sky.{" "}
+            sky.
           </p>
         </div>
 
@@ -88,7 +121,10 @@ export default function Songs() {
               <button
                 key={ch}
                 className="alpha-btn"
-                onClick={() => setActiveLetter(ch)}
+                onClick={() => {
+                  setActiveLetter(ch);
+                  setSearchParams({});
+                }}
               >
                 {ch}
               </button>
@@ -96,17 +132,30 @@ export default function Songs() {
           </div>
         </div>
 
+        {/* ✅ GRID */}
         <div className="songs-grid" role="list">
-          {filteredSongs.length === 0 ? (
-            <p>Loading songs...</p>
+          {visibleSongs.length === 0 ? (
+            <p>No songs found...</p>
           ) : (
-            filteredSongs.map((song) => (
+            visibleSongs.map((song) => (
               <article className="songcard" key={song.id}>
                 <SongCard song={song} />
               </article>
             ))
           )}
         </div>
+
+        {/* ✅ SEE MORE BUTTON */}
+        {visibleCount < filteredSongs.length && (
+          <div className="see-more-wrapper">
+            <button
+              className="see-more"
+              onClick={() => setVisibleCount((prev) => prev + 9)}
+            >
+              SEE MORE
+            </button>
+          </div>
+        )}
       </div>
 
       <Footer />

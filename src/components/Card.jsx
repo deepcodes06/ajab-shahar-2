@@ -8,6 +8,7 @@ export default function Card({
   subtitle,
   desc,
   linkText,
+  umbrellaTitle,
   position = "left",
   offsetX = "0%",
   offsetY = "0vh",
@@ -25,6 +26,9 @@ export default function Card({
 
         <div className="content-wrap">
           <h2 className="card-title">{title}</h2>
+            {umbrellaTitle && (
+    <h3 className="card-umbrella">{umbrellaTitle}</h3>
+  )}
           <h4 className="card-subtitle">{subtitle}</h4>
           <div className="divider"></div>
           <p className="card-desc">{desc}</p>

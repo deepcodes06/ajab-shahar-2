@@ -4,6 +4,8 @@ import "../styles/SongsCard.css";
 
 export default function SongCard({ song }) {
   return (
+     <Link to={`/song/${song.id}`} className="songcard-link-wrapper">
+      <div className="songcard"></div>
     <div className="songcard">
       <div className="songcard-thumb">
         <img src={song.img} alt={song.title} />
@@ -12,19 +14,12 @@ export default function SongCard({ song }) {
 
       <div className="songcard-body">
         <h2 className="songcard-title">{song.title}</h2>
+        <h3 className="songcard-umbrella">{song.umbrellaTitle}</h3>
         <p className="songcard-sub">{song.subtitle}</p>
-
-        <div className="songcard-divider"></div>
-
-        <p className="songcard-meta">{song.meta1}</p>
-        <p className="songcard-meta">{song.meta2}</p>
-
-        <Link to={`/song/${song.id}`} className="songcard-btn">
-          EXPLORE SONG
-        </Link>
       </div>
 
       <img src="/b.svg" className="songcard-wave-bottom" />
     </div>
+    </Link>
   );
 }

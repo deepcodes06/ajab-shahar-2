@@ -1,47 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import MobileMenu from "../components/MobileMenu";
 import Card from "../components/Card";
 import Footer from "../components/Footer";
-import { fetchSongs } from "../api/songs";
+import useFetchSongs from "../hooks/useSongs";
+import { mapSongs } from "../utils/mapSong";
+
 import "../styles/Home.css";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [cards, setCards] = useState([]); 
 
-  useEffect(() => {
-    async function loadSongs() {
-      const songs = await fetchSongs();
+  // Fetch all songs ONCE using the reusable hook
+  const { data: songs } = useFetchSongs([]);
 
-      // Only pick songs that should appear on home landing page
-      const filtered = songs.filter(song => song.showOnLandingPage);
-
-      // Limit to first 4 (or random 4)
-      const selected = filtered.slice(0, 4);
-
-      // Convert API format → your UI format
-      const mapped = selected.map(song => ({
-        id: song.id,
-         img: song.thumbnailURL 
-      ? `https://ajabshahar.com${song.thumbnailURL}` 
-      : "/img1.svg",
-        title: song.metaTitle || "Untitled Song",
-        subtitle: `${song.singers?.[0]?.name || ""} • ${song.poets?.[0]?.name || ""}`,
-        desc: song.metaDescription?.substring(0, 160) + "...", 
-        linkText: "EXPLORE SONG",
-      }));
-
-      setCards(mapped);
-    }
-
-    loadSongs();
-  }, []);
+  // Reusable mapping → same output structure as your old working code
+  const cards = mapSongs(songs).slice(0,4);
 
   return (
     <>
       <div className="home-container">
-        {/* Background layers */}
         <div className="bg-pattern"></div>
         <div className="top-wave"></div>
         <div className="side left"></div>

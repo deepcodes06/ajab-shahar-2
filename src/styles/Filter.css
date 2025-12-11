@@ -2,92 +2,174 @@
 .filter-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.35);
   opacity: 0;
   pointer-events: none;
   transition: 0.3s ease;
 }
 
-.filter-overlay.show {
-  opacity: 0;
-  pointer-events: auto;
-}
-
-/* DRAWER */
+/* DRAWER PANEL */
 .filter-drawer {
   position: fixed;
-  top: 16vh;
+  top: 14vh;
   left: 0;
-  width: 300px;
-  height: auto;
+  width: 21rem;
+  max-width: 90vw;
+  height:78vh;
   background: #fff;
   transform: translateX(-100%);
   transition: 0.35s ease;
   z-index: 5;
-  padding: 2rem 3rem;
+  padding: 1rem 2rem;
+  overflow: hidden;
 }
 
 .filter-drawer.open {
   transform: translateX(0);
 }
 
-/* HEADER */
-.filter-header {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.6rem;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #e31e79;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 0rem;
-  margin-bottom: 0rem;
+/* UNIVERSAL DIVIDER LINE */
+.filter-divider {
+  width: 100%;
+  height: 0.1rem;
+  background: #B1B1B1;
+  opacity: 0.7;
+  margin-top: 4rem;
 }
 
+/* HEADER ROW */
+.filter-header-row {
+  margin-top: 1rem;
+  margin-bottom: -3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-title {
+  color: #333;
+  font-family: "Merriweather Sans";
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  pointer-events: none;
+}
+
+/* CLOSE BUTTON */
 .drawer-close {
   background: none;
-  color: black;
   border: none;
-  font-size: 1.4rem;
+  color: #e31e79;
+  font-size: 1rem;
   cursor: pointer;
-}
-
-/* SECTION */
-.filter-section h3 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-  color: #333;
-}
-
-.filter-section ul {
-  list-style: none;
+  margin-right: -1.2rem;
   padding: 0;
 }
 
-.filter-section li {
-  padding: 0.35rem 0;
+/* INLINE TABS (Singer | Poet | Theme) */
+.inline-types {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.inline-types button {
+  border: none;
+  background: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
   cursor: pointer;
-  font-size: 0.9rem;
-  color: #444;
+  padding: 0;
 }
 
-.filter-section li:hover {
+.inline-types .active {
+  color: #333;
+}
+
+/* "|" between tabs */
+.divider-dot {
+  color: #333;
+  font-weight: 400;
+}
+
+/* CLEAR ALL — reduced spacing */
+.top-clear {
+  background: none;
+  border: none;
   color: #e31e79;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 1rem 0;   /* 🔥 smaller gap */
+  cursor: pointer;
+  padding: 0;
 }
 
-/* CLEAR BUTTON */
-.clear-btn {
-  margin-top: 1.5rem;
+.div-3 {
   width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #e31e79;
-  color: #e31e79;
-  background: transparent;
-  cursor: pointer;
-  border-radius: 4px;
+  height: 0.1rem;
+  background: #B1B1B1;
+  opacity: 0.7;
+  margin-top: 0.5rem;
 }
 
-.clear-btn:hover {
-  background: #e31e7933;
+
+/* LIST AREA */
+.filter-scroll-area {
+  max-height: 50vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.filter-scroll-area ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.filter-scroll-area li {
+  padding: 0.45rem 0;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: #555;
+}
+
+.filter-scroll-area li:hover {
+  color: #e31e79;
+}
+
+/* Custom thin grey scrollbar */
+.filter-scroll-area::-webkit-scrollbar {
+  width: 6px;                 /* thin scrollbar */
+}
+
+.filter-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.filter-scroll-area::-webkit-scrollbar-thumb {
+  background: #cfcfcf;        /* grey bar */
+  border-radius: 10px;
+}
+
+.filter-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .filter-drawer {
+    padding: 1.2rem;
+    width: 85vw;
+  }
+
+  .filter-title {
+    font-size: 1rem;
+  }
+
+  .inline-types button {
+    font-size: 0.9rem;
+  }
 }

@@ -1,15 +1,20 @@
-/* PAGE WRAPPER */
+html, body {
+  overflow-x: hidden !important;
+}
+
 .songs-page {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  background-color: #fff;
   overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .nav-content {
   position: relative;
   z-index: 20;
-  max-width: none;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 3%;
 }
@@ -19,9 +24,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100%  ;
   background-image: url("/bg2.svg");
-  background-repeat: repeat-y;    
+  background-repeat: repeat;    
   background-size: 100% auto;      
   background-position: center top;
   z-index: 0;
@@ -48,32 +53,18 @@
 .songs-side {
   position: fixed;
   top: 0;
-  height: 100vh;
-  width: 12vw;              
+  bottom: 0;  
+  height: 200vh;       
+  width: 12vw;
   background-repeat: repeat-y;
-  background-size: 100% auto; 
-  background-position: top; 
+  background-size: 100% auto;
   pointer-events: none;
   z-index: 3;
 }
+
 .songs-side.left { left: 0; background-image: url("/left.svg"); }
 .songs-side.right { right: 0; background-image: url("/right.svg"); }
 
-.songs-tree {
-  position: absolute;
-  bottom: 12vh;
-  right: 11%;
-  width: 5vw;
-  max-width: 90px;
-  height: 15vh;
-  background-image: url("/tree.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
-  z-index: 30;
-  pointer-events: none;
-  filter: brightness(0) contrast(150%);
-}
 
 /* MAIN CONTENT */
 .songs-content {
@@ -86,12 +77,14 @@
 /* INTRO TEXT */
 .songs-intro {
   max-width: 50rem;
-  margin: 0 auto 3rem;
+  margin: 1.2rem auto 2rem;
   text-align: center;
   color: #575756;
   font-family: "Lora";
-  line-height: 1.7;
-  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  font-style: italic;
+  line-height: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
 }
 
 .songs-header {
@@ -118,7 +111,8 @@
 .open-filter-btn {
   position: absolute;
   top: 1vh;            
-  left: -11vw;     
+  left: 0; 
+  transform: translateX(-160%);    
   background: none;
   font-size: 1.1rem;
   font-weight: 600;
@@ -134,7 +128,6 @@
   grid-template-columns: repeat(3, minmax(240px, 1fr));
   gap: 8rem;
   justify-items: center;
-  overflow: visible;
 }
 
 .open-filter-btn,
@@ -147,6 +140,18 @@
 .filter-section li:hover {
   background: none !important;
   box-shadow: none !important;
+}
+
+.see-more {
+  margin-top: 3rem;
+  border: none;
+  background: none;
+  color: #e31e79;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 /* FILTERS */
