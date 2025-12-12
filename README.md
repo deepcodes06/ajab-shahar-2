@@ -7,8 +7,10 @@ Using hooks and utils for API calls -
 1. id
 2. img
 3. title
-4. desc
-5. linkText
+4. subtitle
+5. umbrellaTitle
+6. desc
+7. linkText
 
 1. Fetch songs dynamically from:
 https://ajabshahar.com/api/songs/getPublishedSongs
@@ -40,5 +42,12 @@ Features-
 3. The lyrics Original/Translation/Transliteration fetched from the API-(https://ajabshahar.com/api/songs/getPublishedSongs)
 4. The Related song cards are randomly fetched from the API.
 
+<!-- Poems page -->
+API-https://ajabshahar.com/api/couplets/getPublished
 
+<!-- Reflection page -->
+API-https://ajabshahar.com/api/reflections/completeInfo?content=authoringComplete
+    https://ajabshahar.com/api/reflections/completeInfo?content=featured
 
+<!-- People -->
+API-https://ajabshahar.com/api/people

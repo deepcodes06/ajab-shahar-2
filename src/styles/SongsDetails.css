@@ -4,17 +4,16 @@
   min-height: 100vh;
   background-color: #f7f7f7;
   color: #333;
-  font-family: Lora;
+  font-family: "Lora";
 }
 
 .song-details-bg {
-  position: fixed;
+  position: absolute;
   inset: 0;
   background-image: url("/bg2.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center top;
-  opacity: 0.28;
   z-index: 0;
   pointer-events: none;
 } 
@@ -104,16 +103,20 @@
 }
 
 .variant-title {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #e31e79;
   margin-bottom: 0.15rem;
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: "Merriweather Sans";
   font-weight: 400;
 }
 
 .variant-meta {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #4F4F4F;
+  font-family: "lora";
+  font-style: normal;
+  font-weight: 300;
+  
 }
 
 /* =========================
@@ -127,8 +130,12 @@
 }
 
 .song-title {
-  font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+  font-size: 1.8rem;
   color: #e31e79;
+  font-family: Lora;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
   margin-bottom: 0.35rem;
 }
 
@@ -176,11 +183,11 @@
   max-width: 48rem;
   margin: 0 auto 2.5rem;
   text-align: left;
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: "Merriweather Sans";
 }
 
 .about-wrapper {
-  font-size: clamp(0.9rem, 1vw, 1rem);
+  font-size: 1rem;
   line-height: 1.8;
   color: #4F4F4F;
   font-weight: 300;

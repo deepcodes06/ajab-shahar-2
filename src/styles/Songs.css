@@ -20,7 +20,7 @@ html, body {
 }
 
 .songs-bg-pattern {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -51,11 +51,11 @@ html, body {
 }
 
 .songs-side {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;  
-  height: 200vh;       
-  width: 12vw;
+  height: auto;       
+  width: 13vw;
   background-repeat: repeat-y;
   background-size: 100% auto;
   pointer-events: none;
