@@ -1,14 +1,8 @@
-// ⭐ Mapping for Home.jsx → same output shape as your old working code
 export function mapSongs(songs = []) {
   return songs.map(song => {
     const singers = song.singers?.map(s => s.name) || [];
     const poets = song.poets?.map(p => p.name) || [];
 
-    // -----------------------------
-    // ⭐ Build subtitle like Ajab Shahar:
-    // sing X & Y
-    // poet Z
-    // -----------------------------
     let subtitle = "";
 
     if (singers.length > 0) {

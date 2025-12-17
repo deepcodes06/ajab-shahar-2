@@ -1,24 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import MobileMenu from "../components/MobileMenu";
 import Card from "../components/Card";
 import Footer from "../components/Footer";
 import useFetchSongs from "../hooks/useSongs";
 import { mapSongs } from "../utils/mapSong";
-
+import Popup from "./PopUp";
 import "../styles/Home.css";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+    const [popupOpen, setPopupOpen] = useState(true);
+  const [popupData, setPopupData] = useState(null)
 
   // Fetch all songs ONCE using the reusable hook
   const { data: songs } = useFetchSongs([]);
 
-  // Reusable mapping → same output structure as your old working code
+
+    const mappedSongs = mapSongs(songs);
+  useEffect(() => {
+    if (mappedSongs.length > 0) {
+      setPopupData(mappedSongs[0]);
+    }
+  }, [songs]);
+
   const cards = mapSongs(songs).slice(0,4);
 
   return (
     <>
+      <Popup open={popupOpen} data={popupData} onClose={() => setPopupOpen(false)} />
+
       <div className="home-container">
         <div className="bg-pattern"></div>
         <div className="top-wave"></div>
