@@ -1,10 +1,12 @@
                                                                       PROJECT NOTES
 
 <!-- Home Page -->
+
 Fonts-("https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600&display=swap")
 Features - random tile of each module
 
 Using hooks and utils for API calls -
+
 1. id
 2. img
 3. title
@@ -17,27 +19,30 @@ Using hooks and utils for API calls -
    https://ajabshahar.com/api/songs/getPublishedSongs
 9. Map API fields to the cloned UI’s card layout.
 10. Support features such as:
-Dynamic song list
-filter-based sections
-Individual song detail page
+    Dynamic song list
+    filter-based sections
+    Individual song detail page
 
 <!-- Songs Page -->
+
 API-https://ajabshahar.com/api/songs/getPublishedSongs
 
 Features-
+
 1. Filtering Cards with names that start with the alphabet chosen.
 2. Filter content where we can filter by name of the singers/poets(the names are fetched from the API).
 
 Params used for songs page-
+
 1. "id": song.id,
 2. "contentType":song.contentFormat,
-3. "contentId": 'song*' + song.id,
+3. "contentId": 'song\*' + song.id,
 4. "isSong": true,
 5. "englishTranslation": song.songTitle.englishTranslation,
 6. "customStyle": (customStyle) ? customStyle() : '',
 7. "englishTransliteration": song.songTitle.englishTransliteration,
 8. "category": (song.songCategory) ? song.songCategory.name : "",
-9. "gathering": *.isEmpty(song.gathering) ? "" : song.gathering.english,
+9. "gathering": \*.isEmpty(song.gathering) ? "" : song.gathering.english,
 10. "duration": song.duration,
 11. "singer": (song.singers == null || song.singers.length == 0) ? '' : song.singers[0].name + (song.singers[1] != null ? ' ......' : ''),
 12. "singers": (song.singers != null && song.singers.length > 1) ? getSingers(song.singers) : '',
@@ -54,6 +59,7 @@ Params used for songs page-
 23. "words": getWords(song.words)
 
 <!-- Songs Details -->
+
 API-https://ajabshahar.com/api/songs/getPublishedSongs
 
 Features-
@@ -64,24 +70,27 @@ Features-
 4. The Related song cards are randomly fetched from the API.
 
 Params used for songsdetails page-
+
 1. "id": song.id,
 2. "contentId": "song\_" + song.id,
 3. "videoId": song.youtubeVideoId,
 4. "audioUrl": song.soundCloudTrackId,
 5. "singer": getSingers(song.singers),
-5. "poet": poet,
-6. "downloadURL": song.downloadURL,
-7. "about": (song.about == null) ? song.about : '\'' + song.about + '\'',
-8. "words": \_getBasicWordDetails(song.words)
-9. "id": word.id,
-10. "translation": word.wordTranslation,
-11. "transliteration": word.wordTransliteration,
-12. "isRootWord": word.rootWord
+6. "poet": poet,
+7. "downloadURL": song.downloadURL,
+8. "about": (song.about == null) ? song.about : '\'' + song.about + '\'',
+9. "words": \_getBasicWordDetails(song.words)
+10. "id": word.id,
+11. "translation": word.wordTranslation,
+12. "transliteration": word.wordTransliteration,
+13. "isRootWord": word.rootWord
 
 <!-- Poems page -->
+
 API-https://ajabshahar.com/api/couplets/getPublished
 
 Params used for poems page-
+
 1. "id": couplet.id,
 2. "isPublished": true,
 3. "englishTranslation": couplet.englishTranslation,
@@ -101,10 +110,49 @@ Params used for poems page-
 API-https://ajabshahar.com/api/reflections/completeInfo?content=authoringComplete
 https://ajabshahar.com/api/reflections/completeInfo?content=featured
 
+Params used for Reflection page -
+
+1. title:$scope.reflectionDetails.title,
+2. image:$scope.reflectionDetails.originalObject.thumbnailURL,
+3. description:$scope.reflectionDetails.originalObject.reflectionExcerpt,
+4. metaTitle : $scope.reflectionDetails.metaTitle ,
+5. metaDescription : $scope.reflectionDetails.metaDescription ,
+6. metaKeywords : $scope.reflectionDetails.metaKeywords
+
 <!-- People -->
 
 API-https://ajabshahar.com/api/people
 
+Params used for People's page -
+
+1. title:$scope.person.name,
+2. image:$scope.person.thumbnailImg,
+3. description:$scope.person.profile,
+4. metaTitle : $scope.person.metaTitle ,
+5. metaDescription : $scope.person.metaDescription ,
+6. metaKeywords : $scope.person.metaKeywords
+
 <!-- Films -->
 
 API-https://ajabshahar.com/api/films/getPublished
+
+Params used for Films detail page -
+
+1. title:filmObj.englishTransliteration,
+2. image:filmObj.thumbnailUrl,
+3. description:filmObj.aboutText,
+4. metaTitle : $scope.filmObj.metaTitle,
+5. metaDescription : $scope.filmObj.metaDescription,
+6. metaKeywords : $scope.filmObj.metaKeywords
+7. title:$scope.filmDetails.filmTitle,
+8. image:$scope.filmDetails.filmURL,
+9. description:$scope.filmDetails.verb
+
+Params used for Films explore page -
+
+1. title:$scope.filmDetails.title,
+2. image:$scope.filmDetails.thumbnailURL,
+3. description:$scope.filmDetails.description,
+4. metaTitle : $scope.filmDetails.metaTitle,
+5. metaDescription : $scope.filmDetails.metaDescription,
+6. metaKeywords : $scope.filmDetails.metaKeywords
