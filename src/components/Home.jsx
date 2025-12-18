@@ -12,6 +12,8 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
     const [popupOpen, setPopupOpen] = useState(true);
   const [popupData, setPopupData] = useState(null)
+  const [popupIndex, setPopupIndex] = useState(0);
+
 
   // Fetch all songs ONCE using the reusable hook
   const { data: songs } = useFetchSongs([]);
@@ -28,7 +30,10 @@ export default function Home() {
 
   return (
     <>
-      <Popup open={popupOpen} data={popupData} onClose={() => setPopupOpen(false)} />
+      <Popup open={popupOpen} data={popupData} onClose={() => setPopupOpen(false)}
+  items={cards}       // array of cards
+  index={popupIndex}
+  setIndex={setPopupIndex} />
 
       <div className="home-container">
         <div className="bg-pattern"></div>

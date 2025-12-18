@@ -1,157 +1,184 @@
+/* =========================
+   OVERLAY
+========================= */
 .popup-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
 }
 
-/* =========================
-   MAIN POPUP
-========================= */
 .popup-box {
   position: relative;
-  width: 100%;
-  max-width: 35rem;
-  padding: 3.6rem 2.6rem 3rem;
-  background-image: url("/pop.svg");
-  background-repeat: no-repeat;
-  background-position: center;
+  width: 31rem; /* FIXED */
+  height: 30rem; /* FIXED */
+  max-width: 92vw;
+  max-height: 92vw;
+  background: url("/pop.svg") no-repeat center;
   background-size: 100% 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  bottom: 93rem;
+  justify-content: center;
+  border-radius: 1rem;
 }
 
-/* =========================
-   INNER WHITE CARD
-========================= */
 .popup-inner-bg {
-  position: absolute;
-  inset: 1rem;
-  background-image: url("/popbg.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 90%;
-  z-index: 1;
-
-  /* FIX */
-  overflow: hidden;
+  width: 24rem; /* FIXED */
+  height: 30rem; /* FIXED */
+  background: url("/popbg.svg") no-repeat center;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* =========================
-   BIRD
-========================= */
 .popup-bird {
   position: absolute;
-  top: -1.4rem;
-  left: 1.2rem;
-  width: 70px;
-  height: 70px;
+  top: 1.4rem;
+  left: 1rem;
+  width: 70px; /* FIXED */
+  height: 70px; /* FIXED */
   background: url("/bird.svg") no-repeat center;
   background-size: contain;
   z-index: 6;
 }
 
-/* =========================
-   CLOSE BUTTON
-========================= */
 .popup-close {
   position: absolute;
-  top: 1.7rem;
-  right: 1rem;
-  border: none;
+  top: 2.9rem;
+  right: 2.7rem;
   background: none;
-  font-size: 1.3rem;
+  border: none;
+  font-size: 1rem;
   color: #e31e79;
   cursor: pointer;
-  z-index: 10;
+  z-index: 7;
 }
 
-/* =========================
-   CONTENT
-========================= */
 .popup-content {
-  position: relative;
-  z-index: 5;
-  width: 100%;
+  width: 82%;
   text-align: left;
-
-  /* FIX */
-  max-height: calc(100% - 2.5rem);
-  overflow-y: auto;
-  box-sizing: border-box;
-  padding-right: 0.5rem;
+  font-family: "Merriweather Sans", sans-serif;
 }
 
-/* =========================
-   THUMBNAIL
-========================= */
-.popup-thumb-wrap {
-  width: 100%;
-  height: 90%;
-  overflow: hidden;
+.ajab-news {
+  color: #4f4f4f;
+  font-family: Lora;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+}
 
-  /* FIX */
-  flex-shrink: 0;
+.popup-thumb-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .popup-thumb {
-  margin-top: 1rem;
-  margin-left: 4.5rem;
-  width: 70%;
-  height: 90%;
+  width: 16rem; /* FIXED */
+  height: 9rem; /* FIXED */
   object-fit: cover;
 }
 
-/* =========================
-   TEXT
-========================= */
 .popup-title {
-  margin-top: 1rem;
-  font-size: 1rem;
-  color: #e31e79;
-  font-family: "Lora", serif;
-
-  /* FIX */
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  font-family: Lora;
+  font-size: 1.1rem;
+  color: #4d4d4d;
+  font-weight: 600;
+  font-family: normal;
+  font-style: normal;
+  margin-bottom: 0.6rem;
+  margin-left: 1.8rem;
 }
 
 .popup-desc {
-  margin-top: 0.5rem;
-  font-size: 0.95rem;
-  color: #333;
-  font-family: "Merriweather Sans", sans-serif;
-  line-height: 1.5;
-
-  /* FIX */
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-.popup-explore {
-  display: inline-block;
-  margin-top: 1rem;
-  color: #e31e79;
-  font-weight: 600;
-  text-decoration: none;
+  font-size: 0.9rem;
+  color: #6d6e71;
+  font-family: "Merriweather Sans";
+  line-height: normal;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  margin-left: 1.8rem;
 }
 
 /* =========================
-   TABLET
+   EXPLORE LINK
 ========================= */
-@media (max-width: 768px) {
-  .popup-box {
-    max-width: 22rem;
-    padding: 3.2rem 2.2rem 2.6rem;
+.popup-explore {
+  color: #e31e79;
+  font-family: "Merriweather Sans";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-left: 1.8rem;
+}
+
+.popup-explore:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   SLIDER ARROWS
+========================= */
+.popup-arrow {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  color: #B3B3B3;
+  font-size: 2rem;
+  font-weight: 100;
+  cursor: pointer;
+  z-index: 8;
+  line-height: 1;
+  transition: ease-in 1s;
+}
+
+.popup-arrow.left {
+  left: -3rem;   /* sits left of thumbnail */
+}
+
+.popup-arrow.right {
+  right: -2rem;
+}
+
+.popup-arrow:focus,
+.popup-arrow:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Mobile: pull arrows closer */
+@media (max-width: 480px) {
+  .popup-arrow.left {
+    left: -1.4rem;
   }
 
-  .popup-thumb-wrap {
-    height: 160px;
+  .popup-arrow.right {
+    right: -1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .popup-box {
+    width: 26rem;
+  }
+
+  .popup-thumb {
+    width: 80%;
+  }
+
+  .popup-content {
+    width: 88%;
   }
 }
 
@@ -160,29 +187,25 @@
 ========================= */
 @media (max-width: 480px) {
   .popup-box {
-    max-width: 100%;
-    padding: 3rem 1.8rem 2.4rem;
+    width: 92vw;
   }
 
   .popup-inner-bg {
-    inset: 0.8rem;
+    width: 82%;
+    height: 82%;
   }
 
   .popup-bird {
     width: 56px;
     height: 56px;
-    top: -1.2rem;
-  }
-
-  .popup-thumb-wrap {
-    height: 140px;
+    top: -1rem;
   }
 
   .popup-title {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
   .popup-desc {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 }
